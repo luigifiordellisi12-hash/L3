@@ -1,32 +1,33 @@
 
-# Robot Introduction
+# My School Subject Planner
 
-class Robot:
-    maker = "Future Tech"
+# A: Student card
+card = ("Oliver", 10, "A")
 
-    def __init__(self, name, model, battery):
-        self.name = name
-        self.model = model
-        self.battery = max(0, min(battery, 100))
+# TODO 1: Print student name, grade and section
+print("Student:", card[0])
+print("Grade and section:", card[1:3])
 
-    def introduce(self):
-        return f"Hello! My name is {self.name}. I am a {self.model} robot made by {self.maker}. Battery level: {self.battery}%"
+# B: Subjects for each day
+monday_list = ["Biology", "Maths", "Geography", "Maths", "Drama"]
+tuesday_list = ["Biology", "History", "French", "Music", "History"]
 
-    def charge(self, amount):
-        if amount <= 0:
-            return "Please enter a positive charge amount."
+# TODO 2: Create sets
+monday = set(monday_list)
+tuesday = set(tuesday_list)
 
-        self.battery = min(self.battery + amount, 100)
-        return f"{self.name}'s battery is now {self.battery}%."
+print("Monday:", len(monday), sorted(monday))
 
+# TODO 3: Update subjects
+monday.discard("Drama")
+tuesday.add("Computing")
+monday.discard("Dance")
 
-# Create two robots
-tom = Robot("Alex", "X-500", 35)
-jerry = Robot("Max", "R-300", 120)
+print("Monday:", sorted(monday))
+print("Tuesday:", sorted(tuesday))
 
-print(tom.introduce())
-print(jerry.introduce())
-
-print(tom.charge(40))
-print(tom.charge(50))
-print(tom.charge(-5))
+# TODO 4: Set operations
+print("Both days:", sorted(monday & tuesday))
+print("Either day:", sorted(monday | tuesday))
+print("Only Monday:", sorted(monday - tuesday))
+print("Exactly one day:", sorted(monday ^ tuesday))
